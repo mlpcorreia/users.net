@@ -1,0 +1,35 @@
+﻿@page
+@model UserProfile.Pages.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    @Model.username
+    @{
+        if (!String.IsNullOrEmpty(Model.profile))
+        {
+            Write(System.IO.File.ReadAllText(@Model.profile.Replace("..\\", "")));
+        }
+    }
+</div>
+<div>
+    <form method="post">
+        <label for="fname">Username:</label>
+        <input type="text" id="uname" name="uname"><br>
+        <label for="profile">Profile Path:</label>
+        <input type="text" id="profile" name="profile"><br>
+        <input type="submit" value="Create user">
+    </form> 
+    
+</div>
+</body>
+</html>

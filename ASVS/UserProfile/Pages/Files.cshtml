@@ -1,0 +1,27 @@
+﻿@page
+@model UserProfile.Pages.Files
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>Dirs and files</h1>
+<div>
+    @Model.dirContent
+    
+    @{
+            if (!String.IsNullOrEmpty(Request.Query["filename"]))
+            {
+                Write(System.IO.File.ReadAllText(Request.Query["filename"]));
+            }
+        }
+</div>
+</body>
+</html>
