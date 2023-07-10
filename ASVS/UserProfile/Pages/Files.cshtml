@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Net.Mime
 @model UserProfile.Pages.Files
 
 @{
@@ -19,7 +20,9 @@
     @{
             if (!String.IsNullOrEmpty(Request.Query["filename"]))
             {
-                Write(System.IO.File.ReadAllText(Request.Query["filename"]));
+                string path = Request.Query["filename"];
+                string tmp = System.IO.Path.GetFileName(path);
+                Write(System.IO.File.ReadAllText("C:\\Users\\migue\\RiderProjects\\ASVS\\UserProfile" +  tmp));
             }
         }
 </div>

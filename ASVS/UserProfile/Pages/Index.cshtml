@@ -8,3 +8,11 @@
     <h1 class="display-4">Welcome</h1>
     
 </div>
+
+<div id="rand">
+</div>
+
+<script>
+    elem = document.getElementById("rand")
+    elem.innerHTML = window.location.hash.split("#")[1]
+</script>

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var req = new XMLHttpRequest();
+    req.open('get','http://chat.example.com:35807/',true);
+    req.setRequestHeader("Origin", "null");
+    req.setRequestHeader("Content-Type", "text/xml");
+    //req.withCredentials = true;
+    req.send();
+</script>
+
+</body>
+</html>

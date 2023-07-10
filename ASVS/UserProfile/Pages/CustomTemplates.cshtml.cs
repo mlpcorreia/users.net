@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 using RazorLight;
@@ -8,18 +9,18 @@ namespace UserProfile.Pages;
 public class CustomTemplates : PageModel
 {
     public string usertag { get; set; }
-    
+
     public void OnGet()
     {
-        string methodCode = @"
-        string helloString =  $@""Hello """ + (String)Request.Query["name"] +
-                            @"System.Console.WriteLine(""Test script"");
-";
+        if (!String.IsNullOrEmpty(Request.Query["name"]))
+        {
+            string methodCode = "System.Console.WriteLine(\"Test script\");" + Request.Query["name"];
 
-        var opt = ScriptOptions.Default;
-        opt.AddImports("System");
-        var state = CSharpScript.RunAsync(methodCode, opt).Result;
-        Console.WriteLine("Code execution state: " + state);
+            var opt = ScriptOptions.Default;
+            opt.AddImports("System");
+            var state = CSharpScript.RunAsync(methodCode, opt).Result;
+            Console.WriteLine("Code execution state: " + state);
+        }
     }
 
     public async void OnPost()

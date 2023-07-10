@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserProfile", "UserProfile\UserProfile.csproj", "{E9EBABEE-9DEA-440A-8D97-41971A5E6FC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntraChat", "IntraChat\IntraChat.csproj", "{9A87A35D-9494-4186-84AA-5318D5858201}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{E9EBABEE-9DEA-440A-8D97-41971A5E6FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9EBABEE-9DEA-440A-8D97-41971A5E6FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9EBABEE-9DEA-440A-8D97-41971A5E6FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A87A35D-9494-4186-84AA-5318D5858201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A87A35D-9494-4186-84AA-5318D5858201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A87A35D-9494-4186-84AA-5318D5858201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A87A35D-9494-4186-84AA-5318D5858201}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

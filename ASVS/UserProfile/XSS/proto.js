@@ -2,6 +2,15 @@
 const urlParams = new URLSearchParams(window.location.search);
 const payload = urlParams.get('payload');
 
+//document.write(payload)
+//document.write("<script>alert(1)</script>")
+
+//document.write('<img src="' + window.location.hash.split("#")[1])
+
+//img_elem = document.getElementById("profile")
+//img_elem.innerHTML = window.location.hash.split("#")[1]
+
+
 function merge(target, source) {
     for (const attr in source) {
         if (
@@ -17,19 +26,16 @@ function merge(target, source) {
 
 
 const mergeObj = {};
-console.log(payload)
 
-/*
-const testObj = JSON.parse(JSON.stringify({ x: 5, y: 6 , toString: "break toString function"}));
+const testObj = JSON.parse(JSON.stringify({ x: 5, y: 6 , __proto__ : {toString: "break toString function"}}));
 
+
+merge(mergeObj, testObj)
 console.log(testObj);
 
-let keys = Object.keys(testObj);
 
-const mergeObj = {};
 
-for (let key of keys) {
+/*or (let key of keys) {
     mergeObj[key] = testObj[key];
-}
+}*/
 
-*/

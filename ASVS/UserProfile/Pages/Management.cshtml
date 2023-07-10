@@ -13,8 +13,11 @@
 </head>
 <body>
 <div>
-    @Html.Raw(Request.Query["name"])
-    @Html.Raw(Request.Query["name"])
+    @Request.Query["name"]
+    @{
+        string tmp = System.IO.File.ReadAllText("payload.txt");
+    }
+    @Html.Raw(@Model.rand)
 </div>
 </body>
 </html>
