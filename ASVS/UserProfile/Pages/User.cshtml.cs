@@ -5,7 +5,6 @@ using Microsoft.Data.Sqlite;
 
 namespace UserProfile.Pages;
 
-[EnableCors]
 public class User : PageModel
 {
 
@@ -23,32 +22,36 @@ public class User : PageModel
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                // Validar o id como inteiro
-                //int tmp = Int32.Parse(id);
-
-                command.CommandText = "SELECT username, profile FROM users WHERE user_id = $id";
-                command.Parameters.AddWithValue("$id", id);
-                //command.CommandText = "SELECT username, profile FROM users WHERE user_id = " + id;
-                //command.CommandText = $"SELECT username, profile FROM users WHERE user_id = {id}";
-
-                using (var reader = command.ExecuteReader())
+                int tmpId;
+                if (int.TryParse(id, out tmpId))
                 {
-                    while (reader.Read())
+                    command.CommandText = "SELECT username, profile FROM users WHERE user_id = $id";
+                    command.Parameters.AddWithValue("$id", tmpId);
+                    //command.CommandText = "SELECT username, profile FROM users WHERE user_id = " + id;
+                    //command.CommandText = $"SELECT username, profile FROM users WHERE user_id = {id}";
+
+                    using (var reader = command.ExecuteReader())
                     {
-                        username = reader.GetString(0);
-                        profile = reader.GetString(1);
+                        while (reader.Read())
+                        {
+                            username = reader.GetString(0);
+                            profile = reader.GetString(1);
+                        }
                     }
                 }
             }
         }
     }
 
-    public void OnPost(FormParam tmp)
+    public void OnPost(UserParam tmp)
     {
         using (var connection = new SqliteConnection("Data Source=users.db"))
         {
+            
+            Console.WriteLine("Username: " + tmp.uname + " Profile: " + tmp.profile +  " Role: " + tmp.role);
+            //orm.Insert<Person>(person);
+            //return;
             connection.Open();
-
             var command = connection.CreateCommand();
             //command.CommandText = String.Format("INSERT INTO users(username, role, profile) VALUES ('{0}', 'user', '{1}')", tmp.uname, tmp.profile);
             command.CommandText = "INSERT INTO users(username, role, profile) VALUES ('$username', 'user', '$profile')";

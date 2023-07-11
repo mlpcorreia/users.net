@@ -13,8 +13,14 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public IActionResult OnGet()
     {
-        
+        string returnUrl = Request.Query["returnUrl"];
+        if (!String.IsNullOrEmpty(returnUrl))
+        {
+            return Redirect(returnUrl);
+        }
+
+        return Page();
     }
 }

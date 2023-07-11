@@ -29,7 +29,7 @@ app.UseRouting();
 
 app.Use(async (context, next) =>
 {
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+    context.Response.Headers.Add("Access-Control-Allow-Origin", "http://portal.example.com:8000");
     context.Response.Headers.Add("Access-Control-Allow-Methods", "*");
     context.Response.Headers.Add("Access-Control-Allow-Headers", "*");
     await next();
